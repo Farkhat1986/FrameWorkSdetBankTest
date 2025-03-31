@@ -1,5 +1,7 @@
 ## Установка и запуск проекта FrameWorkSdetTest
 
+[Сгенерированный Allure отчет](https://farkhat1986.github.io/FrameWorkSdetBankTest/)
+
 1. Склонировать репозиторий
 ```
 https://github.com/Farkhat1986/FrameWorkSdetTest
@@ -25,3 +27,4 @@ pytest --alluredir=allure-results
 ```
 allure serve allure-results
 ```
+[Сгенерированный Allure отчет](https://farkhat1986.github.io/FrameWorkSdetBankTest/)
