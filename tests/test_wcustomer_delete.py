@@ -1,6 +1,5 @@
 import allure
 from selenium.webdriver.chrome.webdriver import WebDriver
-
 from pages.list_customer import ListCustomer
 from pages.manager_page import ManagerPage
 

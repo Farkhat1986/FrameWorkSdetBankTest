@@ -91,7 +91,7 @@ class ListCustomer(BasePage):
         return all_data_customers
 
     @staticmethod
-    def _value_with_min_deviation_from_avg(number_list: List[int]) -> int:  # type: ignore
+    def _value_with_min_deviation_from_avg(number_list: List[int]) -> int:
         """Находим значение с минимальным отклонением от среднего.
 
         Args:

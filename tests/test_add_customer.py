@@ -3,7 +3,7 @@ import pytest
 from selenium.webdriver.chrome.webdriver import WebDriver
 
 from pages.add_customer import AddCustomer
-from data.data import Customer
+from data.helpers.generators import Customer
 from pages.list_customer import ListCustomer
 from pages.manager_page import ManagerPage
 

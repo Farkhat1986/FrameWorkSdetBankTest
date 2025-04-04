@@ -1,9 +1,3 @@
-from dataclasses import dataclass
-from faker import Faker
-
-fake = Faker()
-
-
 def _convert_post_code_to_name(post_code_digits: str) -> str:
     """Преобразует последовательность цифр Post Code в соответствующее имя.
 
@@ -20,17 +14,3 @@ def _convert_post_code_to_name(post_code_digits: str) -> str:
     name = ''.join(chars_list).capitalize()
 
     return name
-
-
-@dataclass
-class Customer:
-    """ Представляет собой клиента.
-
-    Attributes:
-        post_code (str): Post Code клиента.
-        first_name (str): Преобразованное имя клиента.
-        last_name (str): Фамилия клиента.
-    """
-    post_code: str = fake.numerify('##########')
-    first_name: str = _convert_post_code_to_name(post_code)
-    last_name: str = fake.last_name()
