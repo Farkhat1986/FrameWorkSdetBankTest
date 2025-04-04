@@ -2,53 +2,48 @@ from pages.base_page import BasePage
 
 
 class AddCustomer(BasePage):
-    """Страница доsбавления клиента.
-
-    Attributes:
-        FIRST_NAME_FIELD (tuple): Локатор поля ввода имени.
-        LAST_NAME_FIELD (tuple): Локатор поля ввода фамилии.
-        POST_CODE_FIELD (tuple): Локатор поля ввода почтового индекса.
-        ADD_CUSTOMER_SUBMIT_BTN (tuple): Локатор кнопки отправки формы добавления клиента.
-    """
-    FIRST_NAME_FIELD = ("xpath", "//form[@name='myForm']//input[@ng-model='fName']")
-    LAST_NAME_FIELD = ("xpath", "//form[@name='myForm']//input[@ng-model='lName']")
-    POST_CODE_FIELD = ("xpath", "//form[@name='myForm']//input[@ng-model='postCd']")
-    ADD_CUSTOMER_SUBMIT_BTN = ("xpath", "//form[@name='myForm']//button[@type='submit']")
+    """Страница добавления клиента."""
+    FIRST_NAME_FIELD = ("xpath", "//input[@ng-model='fName']")
+    LAST_NAME_FIELD = ("xpath", "//input[@ng-model='lName']")
+    POST_CODE_FIELD = ("xpath", "//input[@ng-model='postCd']")
+    ADD_CUSTOMER_SUBMIT_BTN = ("xpath", "//button[@type='submit']")
 
     def enter_first_name(self, first_name: str) -> None:
-        """Вводим имя в поле First Name.
+        """Вводит имя в поле First Name.
 
         Args:
-            first_name (str): Имя клиента.
+            first_name: Имя клиента
         """
-        self.element_to_be_clickable(self.FIRST_NAME_FIELD).send_keys(first_name)
+        self.send_keys_to_element(self.FIRST_NAME_FIELD, first_name)
 
     def enter_last_name(self, last_name: str) -> None:
-        """Вводим фамилию в поле Last Name.
+        """Вводит фамилию в поле Last Name.
 
         Args:
-            last_name (str): Фамилия клиента.
+            last_name: Фамилия клиента
         """
-        self.element_to_be_clickable(self.LAST_NAME_FIELD).send_keys(last_name)
+        self.send_keys_to_element(self.LAST_NAME_FIELD, last_name)
 
     def enter_post_code(self, post_code: str) -> None:
-        """Вводим Post Code в поле для ввода Post Code.
+        """Вводит почтовый индекс в поле Post Code.
 
         Args:
-            post_code (str): Post Code.
+            post_code: Почтовый индекс
         """
-        self.element_to_be_clickable(self.POST_CODE_FIELD).send_keys(post_code)
+        self.send_keys_to_element(self.POST_CODE_FIELD, post_code)
 
     def click_add_customer_submit_btn(self) -> None:
-        """Нажимаем на кнопку отправки формы добавления клиента."""
-        self.element_to_be_clickable(self.ADD_CUSTOMER_SUBMIT_BTN).click()
+        """Нажимает кнопку добавления клиента."""
+        self.click_element(self.ADD_CUSTOMER_SUBMIT_BTN)
 
     def get_alert_message(self) -> str:
-        """Получаем текст сообщения из алерта."""
-        self.alert_is_present()
-        return self.driver.switch_to.alert.text[:-1]
+        """Получает текст сообщения из алерта.
+
+        Returns:
+            Текст сообщения алерта
+        """
+        return self.get_alert_text()
 
     def click_alert(self) -> None:
-        """Принимаем алерт."""
-        self.alert_is_present()
-        self.driver.switch_to.alert.accept()
+        """Принимает алерт."""
+        self.accept_alert()
