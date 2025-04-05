@@ -1,0 +1,16 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="PyUnresolvedReferencesInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredIdentifiers">
+        <list>
+          <option value="mysite.mysite.asgi.channels" />
+          <option value="mysite.chat.consumers" />
+          <option value="mysite.mysite.asgi.chat" />
+          <option value="bytes.text_to_be_present_in_element" />
+          <option value="main.models.django_prometheus" />
+        </list>
+      </option>
+    </inspection_tool>
+  </profile>
+</component>
