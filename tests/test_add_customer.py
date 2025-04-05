@@ -1,5 +1,4 @@
 import allure
-import pytest
 from selenium.webdriver.chrome.webdriver import WebDriver
 
 from pages.add_customer import AddCustomer

@@ -4,8 +4,6 @@ from data.helpers.formatters import _convert_post_code_to_name
 fake = Faker()
 class Customer:
     """ Представляет собой клиента.
-
-    Attributes:
         post_code (str): Post Code клиента.
         first_name (str): Преобразованное имя клиента.
         last_name (str): Фамилия клиента.

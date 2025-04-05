@@ -16,7 +16,7 @@ from pages.manager_page import ManagerPage
     2. Нажать кнопу "Delete" у тех записей, имена которых соответствует специальному критерию
     3. Проверить, что выбранные клиенты отсутствуют в таблице
     """)
-def test_delete_customers(driver: WebDriver) -> None:
+def test_delete_customers(driver: WebDriver):
     with allure.step("Открытие страницу 'https://www.globalsqa.com/angularJs-protractor/BankingProject/#/manager'"):
         list_customers_page = ListCustomer(driver)
         list_customers_page.open()

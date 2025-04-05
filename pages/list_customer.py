@@ -1,46 +1,34 @@
 from typing import Tuple, List
-
 from selenium.webdriver.remote.webelement import WebElement
-
 from pages.base_page import BasePage
+from data.config import *
 
 
 class ListCustomer(BasePage):
-    """Страница со списком клиентов.
+    """Страница со списком клиентов"""
+    TABLE_DATA_ROWS_LIST = TABLE_DATA_ROWS_LIST
+    FIRST_NAME_TITLE = FIRST_NAME_TITLE
+    FIRST_NAMES_LIST = FIRST_NAMES_LIST
+    LAST_NAMES_LIST = LAST_NAMES_LIST
+    POST_CODE_LIST = POST_CODE_LIST
+    DELETE_BTN_LIST = DELETE_BTN_LIST
 
-    Attributes:
-        TABLE_DATA_ROWS_LIST (tuple): Локатор списка строк таблицы данных.
-        FIRST_NAME_TITLE (tuple): Локатор заголовка "First Name".
-        FIRST_NAMES_LIST (tuple): Локатор списка элементов "First Name".
-        LAST_NAMES_LIST (tuple): Локатор списка элементов "Last Name".
-        POST_CODE_LIST (tuple): Локатор списка элементов "Post Code".
-        DELETE_BTN_LIST (tuple): Локатор списка кнопок удаления записей.
-    """
-    TABLE_DATA_ROWS_LIST = ("xpath", "(//table//tbody//tr)")
-    FIRST_NAME_TITLE = ("xpath", "//a[contains(text(),'First Name')]")
-
-    FIRST_NAMES_LIST = ("xpath", "(//tr[@class='ng-scope']//td[1])")
-    LAST_NAMES_LIST = ("xpath", "(//tr[@class='ng-scope']//td[2])")
-    POST_CODE_LIST = ("xpath", "(//tr[@class='ng-scope']//td[3])")
-    DELETE_BTN_LIST = ("xpath", "(//button[@ng-click='deleteCust(cust)'])")
-
-    def sort_by_first_name(self) -> None:
+    def sort_by_first_name(self):
         """Сортируем записи по имени."""
         column = self.element_to_be_clickable(self.FIRST_NAME_TITLE)
         column.click()
         column.click()
 
-    def delete_customers(self) -> None:
+    def delete_customers(self):
         """Удаляем выбранных клиентов."""
         delete_records_element_list = self.get_delete_records_element_list()
         for elem in delete_records_element_list:
             elem[3].click()
 
-    def get_all_records_elements_list(self) -> List[Tuple[WebElement, ...]]:
+    def get_all_records_elements_list(self):
         """Получаем список всех элементов записей.
-
         Returns:
-            List[Tuple[WebElement, ...]]: Список кортежей элементов записей.
+            Список кортежей элементов записей.
         """
         count_data_row = len(self.presence_of_all_elements_located(self.TABLE_DATA_ROWS_LIST))
 
@@ -61,11 +49,10 @@ class ListCustomer(BasePage):
 
         return all_records_elements_list
 
-    def get_delete_records_element_list(self) -> List[Tuple[WebElement, ...]]:
+    def get_delete_records_element_list(self):
         """Получаем список элементов записей, подлежащих удалению.
-
         Returns:
-            List[Tuple[WebElement, ...]]: Список кортежей элементов записей для удаления.
+            Список кортежей элементов записей для удаления.
         """
         all_records_element_list = self.get_all_records_elements_list()
         if not all_records_element_list:
@@ -80,7 +67,7 @@ class ListCustomer(BasePage):
 
         return delete_records_element_list
 
-    def get_all_data_customers(self) -> List[Tuple[str, ...]]:
+    def get_all_data_customers(self):
         """"""
         all_records_element_list = self.get_all_records_elements_list()
         if not all_records_element_list:
@@ -91,18 +78,10 @@ class ListCustomer(BasePage):
         return all_data_customers
 
     @staticmethod
-    def _value_with_min_deviation_from_avg(number_list: List[int]) -> int:
-        """Находим значение с минимальным отклонением от среднего.
-
-        Args:
-            number_list (List[int]): Список чисел.
-
+    def _value_with_min_deviation_from_avg(number_list: List[int]):
+        """Находим значение с минимальным отклонением от среднего. Список чисел
         Returns:
-            int: Значение с минимальным отклонением от среднего.
-
-        Raises:
-            ValueError: Если список чисел пуст.
-        """
+            Значение с минимальным отклонением от среднего"""
         if not number_list:
             raise ValueError("List of numbers must not be empty")
 
